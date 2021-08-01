@@ -5,3 +5,6 @@ class Advertisement(models.Model):
   copy = models.TextField(max_length=3000)
   logo = models.ImageField()
   url = models.URLField()
+
+  def __str__(self):
+    return '{}'.format(self.company_name)
