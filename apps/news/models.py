@@ -39,7 +39,7 @@ class NewsPost(models.Model):
     @property
     def teaser(self):
         body_without_html_tags = re.sub(re.compile("<.*?>"), "", self.body)
-        return body_without_html_tags[:150]
+        return f'<span>{body_without_html_tags[:150]}</span>'
 
     @property
     def source_divesite(self):
