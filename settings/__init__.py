@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'news',
     'taxonomy',
     'wavepool',
+    'webpack_loader'
 ]
 
 MIDDLEWARE = [
@@ -47,6 +48,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
 
 ROOT_URLCONF = 'project.urls'
 
