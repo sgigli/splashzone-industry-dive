@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Q
 from django.urls import reverse
 from django.utils import timezone
+import re
 
 from taxonomy.models import DiveSite, Topic
 
@@ -37,7 +38,8 @@ class NewsPost(models.Model):
 
     @property
     def teaser(self):
-        return self.body[:150]
+        body_without_html_tags = re.sub(re.compile("<.*?>"), "", self.body)
+        return f'<span>{body_without_html_tags[:150]}</span>'
 
     @property
     def source_divesite(self):
