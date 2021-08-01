@@ -18,3 +18,4 @@ urlpatterns = [
     path('api/v1/news/', api_views.NewsPostApi.as_view(), name='api_news')
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
