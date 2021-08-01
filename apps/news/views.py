@@ -42,13 +42,13 @@ def newspost_detail(request, newspost_id):
 
 
 def archive(request):
-    template = loader.get_template('news/archive.html')
-    topics = Topic.objects.all().order_by('display_name')
+    template = loader.get_template('news/spa_archive.html')
+    topics = Topic.objects.all().order_by('display_name').values("pk", "id", "display_name")
     selected_topics, text_search_value = parse_search_terms(request.GET)
     news_archive = NewsPost.search(topics=selected_topics, text_value=text_search_value)
     context = {
         'news_archive': news_archive,
-        'topics': topics,
+        'topics': list(topics),
         'text_search': request.GET.get('text_search'),
         'selected_topics': selected_topics,
         'searched': selected_topics or text_search_value,
