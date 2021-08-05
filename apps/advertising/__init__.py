@@ -36,3 +36,6 @@ ADS = [
 
 def get_ad():
     return random.choice(ADS)
+
+def get_industry_dive_ad():
+    return ADS[-1]
